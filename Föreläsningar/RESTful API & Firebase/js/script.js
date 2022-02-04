@@ -21,7 +21,8 @@ fetch(url,
 })
     .then(r=>r.json())
     .then(d=>console.log(d));
-
+//Lägger till post nr12
+const urlDelete = 
 //Listar alla posts
 fetch(url)
     .then(r=>r.json())
