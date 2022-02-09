@@ -28,8 +28,8 @@ const playerScoreP = document.getElementById("playerScoreP");
 const cpuScoreP = document.getElementById("cpuScoreP");
 let playerScore = 0;
 let cpuScore = 0;
-//Link playerChoice to buttons
 
+//Link playerChoice to buttons
 btnSten.addEventListener("click", function ()
 {
     playerChoice = "sten";
@@ -161,3 +161,21 @@ btnPåse.addEventListener("click", function ()
     }
     console.log("Your choice: ",playerChoice,"CPU's choice: ", cpuChoice);
 });
+const highscoreDatabase = "https://rockpaperscissorshighscore-default-rtdb.europe-west1.firebasedatabase.app/.json";
+// post
+// fetch('https://rockpaperscissorshighscore-default-rtdb.europe-west1.firebasedatabase.app/.json',
+// {
+//   method: 'POST',
+//   body: JSON.stringify(
+//     {
+//     title: 'foo',
+//     body: 'bar',
+//     userId: 1,
+//     }),
+//   headers:
+//   {
+//     'Content-type': 'application/json; charset=UTF-8',
+//   },
+// })
+//   .then((response) => response.json())
+//   .then((json) => console.log(json));
