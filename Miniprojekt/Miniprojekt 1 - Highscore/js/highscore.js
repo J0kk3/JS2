@@ -13,8 +13,10 @@ index       name        score
 //      så sätts den in under (då poängen inte är slagen)
 /*for(i < array.length)
 {
+    console.log(i, array[i].score);
     if(newScore == array[i].score)
     {
+        console.log("Ja, " Plats);
     Plats = i+1;
     }
     else if(newScore > array[i].score)
