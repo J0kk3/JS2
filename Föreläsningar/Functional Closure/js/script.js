@@ -82,3 +82,33 @@ console.log(myCounter.countUp());
 console.log(myCounter.countUp());
 myCounter.reset();
 console.log(myCounter.countUp());
+
+console.log("_____________Timer______________");
+
+// setTimeout(()=>{
+//     alert("Tiden är ute!");
+// }, 2000);
+
+// let counter2 = 0;
+
+// setInterval(() => {
+//     console.log(++counter2);
+// }, 1000);
+
+function timer()
+{
+    let timePassed = 0;
+
+    function timeIsPassing()
+    {
+        timePassed++;
+    }
+    function getTimePassed()
+    {
+        return timePassed;
+    }
+    setInterval(timeIsPassing, 1000);
+    return getTimePassed
+};
+
+const myTimer = timer();
