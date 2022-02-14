@@ -1,3 +1,4 @@
+//Övning 1 - Produkter
 const url = "https://productassignment-56bbb-default-rtdb.europe-west1.firebasedatabase.app/.json";
 // const kryddaUrl = "https://productassignment-56bbb-default-rtdb.europe-west1.firebasedatabase.app/Krydda.json";
 // const iKaffeUrl = "https://console.firebase.google.com/u/0/project/productassignment-56bbb/database/productassignment-56bbb-default-rtdb/data/iKaffe.json";
@@ -39,3 +40,54 @@ fetch(url)
                 p2.style.fontSize="10px";
             }
         });
+//Övning 2 - Forum
+const forumUrl = "https://forumassignment-881f4-default-rtdb.europe-west1.firebasedatabase.app/.json";
+
+const textName = document.getElementById("#userName");
+const textTitle = document.getElementById("#title");
+const textComment = document.getElementById("#comment");
+const postComment = document.getElementById("#post");
+
+
+postToWeb =
+    {
+        method: "PUT",
+        body: JSON.stringify({
+                egenskap: 'jocjes egenskap',
+            }),
+        headers:
+            {
+                'Content-type': 'application/json'
+            }
+    };
+const forumUrl2 = "https://forumassignment-881f4-default-rtdb.europe-west1.firebasedatabase.app/heltNytt.json";
+
+fetch(forumUrl)
+.then(r=>
+    {
+        return r.json();
+    })
+    .then (d=>
+        {
+            console.log(d);
+            for(const i in d)
+            {
+                console.log(i, d[i]);
+                p = document.createElement("p");
+                post.appendChild(p);
+                p.innerText = d[i];
+            }
+        })
+
+// const objektetAttSkickaMed = {
+//     method: "POST",
+//     body: JSON.stringify({
+//         titel: 'Kul dag idag',
+//         body: 'Idag var en extra kul dag'
+//     }),
+//     headers: {
+//         'Content-type': 'application/json'
+//     }
+//   };
+
+//Övning 3 - Att-Göra-Lista
