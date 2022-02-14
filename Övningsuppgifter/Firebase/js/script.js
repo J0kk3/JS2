@@ -49,7 +49,7 @@ const textComment = document.getElementById("#comment");
 const postComment = document.getElementById("#post");
 
 
-postToWeb =
+const postToWeb =
     {
         method: "PUT",
         body: JSON.stringify({
@@ -57,10 +57,10 @@ postToWeb =
             }),
         headers:
             {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json; charset=UTF-8'
             }
     };
-const forumUrl2 = "https://forumassignment-881f4-default-rtdb.europe-west1.firebasedatabase.app/heltNytt.json";
+// const forumUrl2 = "https://forumassignment-881f4-default-rtdb.europe-west1.firebasedatabase.app/.json";
 
 fetch(forumUrl)
 .then(r=>
@@ -86,7 +86,7 @@ fetch(forumUrl)
 //         body: 'Idag var en extra kul dag'
 //     }),
 //     headers: {
-//         'Content-type': 'application/json'
+//         'Content-type': 'application/json; charset=UTF-8'
 //     }
 //   };
 
