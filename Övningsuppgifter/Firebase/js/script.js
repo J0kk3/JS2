@@ -43,51 +43,52 @@ fetch(url)
 //Övning 2 - Forum
 const forumUrl = "https://forumassignment-881f4-default-rtdb.europe-west1.firebasedatabase.app/.json";
 
-const textName = document.getElementById("#userName");
-const textTitle = document.getElementById("#title");
-const textComment = document.getElementById("#comment");
-const postComment = document.getElementById("#post");
+const userName = document.getElementById("userName");
+const textTitle = document.getElementById("title");
+const textComment = document.getElementById("comment");
+const postComment = document.getElementById("post");
 
+console.log(textTitle);
 
-const postToWeb =
+const postBtn = document.getElementById("btn");
+
+postBtn.addEventListener("click", function(e)
+{
+    e.preventDefault();
+    // console.log(textTitle.value);
+    // console.log(textComment.value);
+    // console.log(userName.value);
+    
+    const forumUrl2 = `https://forumassignment-881f4-default-rtdb.europe-west1.firebasedatabase.app/${textTitle.value}.json`;
+ 
+    let postToWeb =
     {
         method: "PUT",
         body: JSON.stringify({
-                egenskap: 'jocjes egenskap',
+                title: `${textTitle.value}`,
+                comment: `${textComment.value}`,
+                userId: `${userName.value}`,
             }),
         headers:
             {
                 'Content-type': 'application/json; charset=UTF-8'
             }
     };
-// const forumUrl2 = "https://forumassignment-881f4-default-rtdb.europe-west1.firebasedatabase.app/.json";
-
-fetch(forumUrl)
-.then(r=>
-    {
-        return r.json();
-    })
-    .then (d=>
+        fetch(forumUrl2, postToWeb)
+    .then(r=>
         {
-            console.log(d);
-            for(const i in d)
-            {
-                console.log(i, d[i]);
-                p = document.createElement("p");
-                post.appendChild(p);
-                p.innerText = d[i];
-            }
+            return r.json();
         })
-
-// const objektetAttSkickaMed = {
-//     method: "POST",
-//     body: JSON.stringify({
-//         titel: 'Kul dag idag',
-//         body: 'Idag var en extra kul dag'
-//     }),
-//     headers: {
-//         'Content-type': 'application/json; charset=UTF-8'
-//     }
-//   };
-
+        .then (d=>
+            {
+                console.log(d);
+                for(const i in d)
+                {
+                    console.log(i, d[i]);
+                    p = document.createElement("p");
+                    post.appendChild(p);
+                    p.innerText = d[i];
+                }
+            })
+});
 //Övning 3 - Att-Göra-Lista
