@@ -13,16 +13,41 @@ function logCompAndTwitter({twitter, company})
 logCompAndTwitter(person);
 
 //Övning 2
-h1 = document.createElement("h1");
-document.body.appendChild(h1);
-
-function displayFullName({firstE},{lastE})
+function displayFullName({first},{last})
 {
-    return h1.innerText = firstE + " " + lastE; //UNDEFINED WIIE! :D
-    // return { firstE: firstE, lastE: lastE }
+    h1 = document.createElement("h1");
+    document.body.appendChild(h1);
+    console.log(h1);
+    return h1.innerText = first + " " + last;
 }
-const elon = displayFullName(person.first, person.last);
+const elon = displayFullName(person, person);
+//Övning 3
+const item =
+{
+    name: "Xbox One X",
+    originalPrice: 499.99,
+    discount: 0.15
+}
 
+function returnTotalNumberAndPrice(number, item)
+{
+    h2 = document.createElement("h2");
+    document.body.appendChild(h2);
+    let price = item.originalPrice * number;
+    return h2.innerText = "Total price: " + price +" " + "no of items: " + number;
+}
+const xboxPrice = returnTotalNumberAndPrice(4, item);
+//Övning 4
+function xboxDiscountPrice(item)
+{
+    h3 = document.createElement("h3");
+    document.body.appendChild(h3);
+    
+    discountPrice = item.originalPrice - (item.originalPrice * item.discount);
+    
+    return h3.innerText = discountPrice;
+}
+const discountedPrice = xboxDiscountPrice(item);
 //Övning 5
 const person0 =
 {
