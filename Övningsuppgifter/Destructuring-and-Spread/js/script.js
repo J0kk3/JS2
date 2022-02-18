@@ -61,11 +61,38 @@ const person1 =
     last: "Sandqvist",
     location: "Los Angeles"
 }
-
 function combineNames({first}, {last})
 {
     console.log(first, last);
     return { firstName: first, lastName: last }
 }
-
 const person2 = combineNames(person1, person0);
+//Övning 6
+const person3 =
+{
+    first: 'Clara',
+    last: 'Leivas',
+}
+function addNewData(person)
+{
+    return {...person, location: "Malmö"}
+}
+console.log(addNewData(person3));
+//Övning 7
+const arr1 = ['fre', 'lör', 'sön'];
+const arr2 = ['mån', 'tis'];
+const arr3 = ['ons', 'tors'];
+
+const weekArr = [...arr2, ...arr3, ...arr1];
+console.log(weekArr);
+//Övning 8
+const month1 = ['jan', 'feb'];
+const month2 = ['mar', 'apr', 'maj'];
+const month3 = ['sep', 'okt'];
+const year = ['jun', 'jul', 'aug', 'nov', 'dec'];
+
+const newYear = ['jun', 'jul', 'aug', ...month3, 'nov', 'dec'];
+
+let newMonths = [...month1, ...month2, ...newYear];
+
+console.log(newMonths);
