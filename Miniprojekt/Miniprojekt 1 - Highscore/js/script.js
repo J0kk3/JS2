@@ -160,42 +160,22 @@ function resetGame()
     cpuScoreP.innerText = 0;
     console.clear()
 }
-//JS2 Miniprojekt 1
 const highscoreDatabase = `https://rockpaperscissorshighscore-default-rtdb.europe-west1.firebasedatabase.app/.json`;
-
-const highscoreElement = document.getElementById("highscore");
-
-(function()
-{
-    const highscoreDatabase = `https://rockpaperscissorshighscore-default-rtdb.europe-west1.firebasedatabase.app/${playerName}.json`;
-    let updateHighscore =
+fetch(highscoreDatabase)
+.then (r =>
     {
-        method: "PUT",
-        body: JSON.stringify({
-            name: `${playerName}`,
-            score: `${playerScore}`,
-        }),
-        headers:
+        return r.json();
+    })
+.then (d => 
+    {
+        for (const i in d)
         {
-            'Content-type': 'application/json; charset=UTF-8'
+            console.log(i, d[i]); //Printar alla objekt i databasen till loggen
+            dbArray = d[i];
+            //console.log(dbArray.length); undefined
         }
-    }
-
-    fetch(highscoreDatabase, updateHighscore)
-        .then(r=>
-            {
-                return r.json();
-            })
-        .then(d=>
-            {
-                const highscoreDatabase2 = "https://rockpaperscissorshighscore-default-rtdb.europe-west1.firebasedatabase.app/.json";
-                for(const i in d)
-                {
-                    console.log(i, d[i]);
-                    p = document.createElement("p");
-                    highscoreElement.appendChild(p);
-                    p.innerText = d[i];
-                }
-                
-    });
-})();
+        // return dbArray;
+        // return dbArray = new Array;
+        // console.log(dbArray);
+        // console.log(dbArray.length); undefined
+});

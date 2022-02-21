@@ -68,6 +68,25 @@ const timer0 = newTimer();
 //Timer1.getTime() -> visa hur många sekunder som har passerat
 //Timer1.reset() -> nollställer timer
 //Övning 4 - Timer 2
+//array.push med värden från olika timers
+function timer(){
+    let date = new Date();
+    let laps = [];
+    function laps(){
+        laps.push(date.getSeconds());
+    }
+    function getLaps(){
+        return laps;
+    }
+    function resetTimer(){
+        laps = [];
+    }
+    setInterval(laps, 2000);
+    setInterval(laps, 1000);
+    return laps;
+}
+
+const myTimer = timer();
 
 //Övning 5 - Tärning 1
 //Övning 6 - Tärning 2
