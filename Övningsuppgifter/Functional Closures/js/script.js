@@ -67,29 +67,64 @@ function newTimer()
 const timer0 = newTimer();
 //Timer1.getTime() -> visa hur många sekunder som har passerat
 //Timer1.reset() -> nollställer timer
+
 //Övning 4 - Timer 2
-//array.push med värden från olika timers
-function timer(){
-    let date = new Date();
+
+function newTimer()
+{
+    let secondsPassed = 0;
     let laps = [];
-    function laps(){
-        laps.push(date.getSeconds());
+    
+    const addTime = () => {secondsPassed++};
+    setInterval(addTime, 1000);
+    const getTime = () => secondsPassed;
+    const lap = () => laps.push(secondsPassed)
+    setInterval(lap, 10000);
+    const getLaps = () => laps;
+    
+    const reset = () => {secondsPassed = 0;};
+    
+    return{
+        getTime: getTime,
+        reset: reset,
+        addTime: addTime,
+        getLaps: getLaps
     }
-    function getLaps(){
-        return laps;
-    }
-    function resetTimer(){
-        laps = [];
-    }
-    setInterval(laps, 2000);
-    setInterval(laps, 1000);
-    return laps;
 }
-
-const myTimer = timer();
-
+const timer1 = newTimer();
 //Övning 5 - Tärning 1
+function dice()
+{
+    const throwDie = () => {console.log(Math.floor(Math.random() * 6 + 1))};
+    
+    return{
+        throwDie: throwDie
+    }
+}
+const die = new dice();
+
 //Övning 6 - Tärning 2
+function dices()
+{
+    let freezeBool = false;
+
+    // const throwDie = () => {console.log(Math.floor(Math.random() * 6 + 1))};
+    const freeze = () => freezeBool = true;
+    const unFreeze = () => freezeBool = false;
+    const roll = () => {
+        if(freezeBool === false){
+            console.log(Math.ceil(Math.random() * 6))
+        }
+    };
+    
+    return{
+        // throwDie: throwDie,
+        freeze: freeze,
+        unFreeze: unFreeze,
+        roll: roll
+    }
+}
+const moreDice = new dices();
 //Övning 7 - Gissa numret
 
 //Inga globala variabler eftersom allting är inbäddat i en anonym funktion
@@ -99,9 +134,45 @@ const myTimer = timer();
 /* Skriv om gissa numret. Skriv om koden så att randomNumber och numberOfGuesses använder sig av functional closures istället.
 När de initieras ska båda tilldelas ett objekt med två metoder var: */
 (function () {
-    let randomNum = getRandomNumber();
-    let numOfGuesses = 0;
-    document.querySelector("button").addEventListener("click", guess);
+    // let randomNum = getRandomNumber();
+    // let numOfGuesses = 0;
+    function randomNum()
+    {
+        //Genererar ett nytt random nummer
+        function reset()
+        {
+            getRandomNumber();
+        }
+        //Returnerar numret som genererats
+        function getNumber()
+        {
+            reset();
+        }
+
+        return{
+            reset: reset,
+            getNumber: getNumber
+        }
+    }
+    function numberOfGuesses()
+    {
+        //Sätter räknaren till 0 igen
+        function reset()
+        {
+            numOfGuesses = 0;
+        }
+        //Lägger till 1 på räknaren
+        function count()
+        {
+            numOfGuesses++
+        }
+        return{
+            reset: reset,
+            count: count
+        }
+    }
+    btn = document.getElementById("button");
+    btn.addEventListener("click", guess);
 
     function guess(e) {
         e.preventDefault();
@@ -156,5 +227,4 @@ När de initieras ska båda tilldelas ett objekt med två metoder var: */
         document.getElementById("high-low").innerText = "";
         document.getElementById("guesses").innerText = `Antal gissningar:`;
     }
-
 })();
