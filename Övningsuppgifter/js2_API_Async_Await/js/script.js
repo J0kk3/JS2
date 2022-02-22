@@ -44,7 +44,7 @@ const timerPromise = new Promise(function(resolved, rejected)
         }
         else
         {
-            rejected("Det blev fel");
+            rejected("Timerpromise: Det är inte mellan 10 och 30");
         }
     }, 3000);
 });
@@ -53,12 +53,14 @@ timerPromise
     {
         const h1 = document.createElement("h1");
         h1.innerText = number;
+        h1.style.color ="hotpink";
         document.body.append(h1);
     })
     .catch(e=>
         {
             console.log(e)
             const p = document.createElement("p");
+            p.style.color ="hotpink";
             p.innerText = e;
             document.body.append(p);
         });
@@ -82,9 +84,9 @@ const promise1 = new Promise(function(resolved, rejected)
         }
         else if(rand < 5)
         {
-            rejected("Det blev fel");
+            rejected("Promise 1: Det blev fel");
         }
-    }, Math.floor(Math.random()*5));
+    }, Math.floor(Math.random()*5000));
 });
 promise1.then(rand=>
     {
@@ -97,6 +99,7 @@ promise1.then(rand=>
         {
             console.log(e)
             const p = document.createElement("p");
+            p.style.color = "red";
             p.innerText = e;
             document.body.append(p);
         });
@@ -111,9 +114,9 @@ const promise2 = new Promise(function(resolved, rejected)
         }
         else if(rand < 5)
         {
-            rejected("Det blev fel");
+            rejected("Promise 2: Det blev fel");
         }
-    }, Math.floor(Math.random()*5));
+    }, Math.floor(Math.random()*5000));
 });
 
 promise2.then(rand=>
@@ -127,6 +130,7 @@ promise2.then(rand=>
         {
             console.log(e)
             const p = document.createElement("p");
+            p.style.color="red";
             p.innerText = e;
             document.body.append(p);
         });
