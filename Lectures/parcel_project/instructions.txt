@@ -1,0 +1,9 @@
+1. npm init -y
+2. remove main: index.js
+3. npm install parcel --save-dev (alt: npm install parcel -D)
+4. npm install animejs
+5.  "scripts": {
+    "dev": "parcel ./src/index.html", 
+    "build": "parcel build ./src/index.html --public-url"
+  },
+  6.     "serve": "serve -s ./dist/"
