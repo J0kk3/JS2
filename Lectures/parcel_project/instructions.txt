@@ -6,4 +6,6 @@
     "dev": "parcel ./src/index.html", 
     "build": "parcel build ./src/index.html --public-url"
   },
-  6.     "serve": "serve -s ./dist/"
+6.     "serve": "serve -s ./dist/"
+7. Global gitignore-file:
+git config --global core.excludesFile ~/.gitignore 
