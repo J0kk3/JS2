@@ -10,7 +10,6 @@
 //   anropa funktionen några gånger
 //#endregion instructions
 
-
 function createElement(size, type, text)
 {
      type = typeOfElement(type)
