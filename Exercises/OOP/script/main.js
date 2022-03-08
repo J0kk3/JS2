@@ -76,15 +76,17 @@ class Cards
         this.value = value;
     }
 }
-function Cärds(suit, character, value)
-{
-    this.suit = suit;
-    this.character = character;
-    this.value = value;
-}
 //endregion Övning 3 - Spelkort
 //region Övning 4 - Kortlek
-const deckOCards()
+class DeckOfCards
+{
+    constructor(suit, character, value)
+    {
+        this.suit = suit,
+        this.character = character,
+        this.value = value
+    }
+}
 //endregion Övning 4
 //region Övning 5 - Sten Sax Påse Hand
 
