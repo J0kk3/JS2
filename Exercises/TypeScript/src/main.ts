@@ -131,11 +131,78 @@ console.log(assåJagHarSlutPåMetodNamn1(assåJagHarSlutPåMetodNamn2, arrayJäv
 console.log(assåJagHarSlutPåMetodNamn1(assåJagHarSlutPåMetodNamn3, arrayJävel2, arrayJävel3));
 //#endregion - Övning 2.7
 //#region - Övning 3.1 - Objekt
+type Name =
+{
+    name: string,
+    age:number
+    presentation:Function
+}
 
+const namnEtt:Name =
+{
+    name: "ett",
+    age: 1,
+    presentation():void
+    {
+        console.log(`namnEtt: ${this.name}, ${this.age}`);
+    }
+}
+const namnTvå:Name =
+{
+    name: "två",
+    age: 2,
+    presentation():void
+    {
+        console.log(`namnTvå: ${this.name}, ${this.age}`);
+    }
+}
+namnEtt.presentation();
+namnTvå.presentation();
 //#endregion - Övning 3.1
 //#region - Övning 3.2
-
+type Car =
+{
+    model: string,
+    year:number,
+    price:number
+    // dennaFunktionenSkaReturneraNågot:Function
+}
+const yourCar:Car =
+{
+    model : "carModel",
+    year : 864,
+    price: 8790000
+}
+function dennaFunktionenSkaReturneraNågot(car:Car):Car
+    {
+        yourCar.price = car.price * 0.8
+        return yourCar;
+    }
+console.log(dennaFunktionenSkaReturneraNågot(yourCar));
 //#endregion - Övning 3.2
 //#region - Övning 3.3
-
+    // Skriv en funktion som tar emot ett argument av typ Animal. Funktionen ska inte returnera någonting.
+    // Animal ska innehålla tre egenskaper
+    // namn - en string
+    // typ - en string
+    // ålder - ett number
+    // Funktionen ska logga all info om djuret i konsolen.
+type Tajp =
+{
+    name:string,
+    type:string,
+    age:number
+    animalInfo:Function
+}
+const börd:Tajp =
+{
+    name: "Forqan",
+    type: "Fågel",
+    age: 3,
+    animalInfo():void
+    {
+        return console.log(`${this.name}, ${this.type}, ${this.age}`);
+    }
+}
+börd.animalInfo();
 //#endregion - Övning 3.3
