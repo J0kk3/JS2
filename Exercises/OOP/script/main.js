@@ -67,7 +67,7 @@ BänkAccount.prototype.showBalance = function()
 const account1 = new BänkAccount(249);
 //#endregion Övning 2
 //#region Övning 3 - Spelkort
-class Cards
+class Card
 {
     constructor(suit, character, value)
     {
@@ -76,24 +76,113 @@ class Cards
         this.value = value;
     }
 }
-//endregion Övning 3 - Spelkort
-//region Övning 4 - Kortlek
+//#endregion Övning 3 - Spelkort
+//#region Övning 4 - Kortlek
 class DeckOfCards
 {
-    constructor(suit, character, value)
+    constructor(deck)
     {
-        this.suit = suit,
-        this.character = character,
-        this.value = value
+        deck = [];
+        this.deck = deck;
+        const suitArr = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
+        const character = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'kn', 'Q', 'K', 'A'];
+        for (let j = 0; j < 4; j++) {
+            for (let i = 0; i < 13; i++) {
+              deck.push(new Card(suitArr[j], i + 1, character[i]));
+            }
+          }
+          console.log(deck);
+    };
+    shuffle()
+    {
+        let currentIndex = this.deck.length, randomIndex;
+        while (currentIndex != 0)
+        {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [this.deck[currentIndex], this.deck[randomIndex]] =
+            [this.deck[randomIndex], this.deck[currentIndex]];
+        }
+    }
+    deal(handSize, numPlayers)
+    {
+        let allHands = [];
+        for(let i = 0; i < numPlayers; i++)
+        {
+            let hand = [];
+            // let totalCardsToDeal = numPlayers * handSize;
+            for(let i = 0; i < handSize; i++)
+            {
+                hand.push( this.deck.pop() );
+                // console.log(deck);
+            }
+            allHands.push(hand);
+        }
+        return allHands;
     }
 }
-//endregion Övning 4
-//region Övning 5 - Sten Sax Påse Hand
-
-//endregion Övning 5 - Sten Sax Påse Hand
-//region Övning 6 - Tärning
-
-//endregion Övning 6 - Tärning
-//region Övning 7 - Tärning 2
-
-//endregion Övning 7 - Tärning 2
+const newDeck = new DeckOfCards();
+newDeck.shuffle();
+console.log(newDeck.deal(5, 3));
+console.log(newDeck);
+//#endregion Övning 4
+//#region Övning 5 - Sten Sax Påse Hand
+// class Hand 
+// {
+//     // constructor(rock, paper, scissors)
+//     // {
+//     //     this.rock = rock;
+//     //     this.paper = paper;
+//     //     this.scissors = scissors;
+//     // }
+//     chooseHand(string)
+//     {
+//         switch (string)
+//         {
+//             case "rock":
+//                 result = "rock";
+//                 // return result;
+//                 break;
+//             case "paper":
+//                 result = "paper";
+//                 // return result;
+//                 break;
+//             case "scissors":
+//                 result = "scissors";
+//                 // return result;
+//                 break;
+//             default:console.log("something went wrong");
+//                 break;
+//         }
+//     }
+//     seeResult()
+//     {
+//         console.log(this.chooseHand.result);
+//     }
+// }
+// const handJävel = new Hand()
+// handJävel.chooseHand("rock");
+// handJävel.seeResult();
+//#endregion Övning 5 - Sten Sax Påse Hand
+//#region Övning 6 - Tärning
+class Die
+{
+    constructor(sides)
+    {
+        this.sides = sides;
+    }
+    throw()
+    {
+        console.log(Math.ceil(Math.random() * this.sides));
+    }
+}
+const sixDie = new Die(6);
+sixDie.throw();
+const fourDie = new Die(4);
+fourDie.throw();
+const twelveDie = new Die(12);
+twelveDie.throw();
+//#endregion Övning 6 - Tärning
+//#region Övning 7 - Tärning 2
+    // ---skipped---
+//#endregion Övning 7 - Tärning 2
