@@ -1,78 +1,137 @@
 class Tamagotchi
 {
-    public hapiness:number = 5; // 10 is happy, 0 is unhappy
+    public happiness:number = 5; // 10 is happy, 0 is unhappy
     public hunger:number = 5; // 0 is full, 10 is starvation
     public tamaName:string;
-    public tamaType:string;
+    public tamaType:tamaTypes;
     public isAlive:boolean = false;
     private id0;
     private id1;
-    constructor(tamaName, tamaType)
+    
+    constructor(tamaName)
     {
         this.tamaName = tamaName;
-        this.tamaType = tamaType;
+        this.tamaType = this.getRandomTama();
+        
+        const tamaNameP = document.getElementById("tamaNameP");
+        tamaNameP.innerText = `Tamagotchi name: ${this.tamaName}`;
         
         this.id0 = setInterval(this.decreaseHapiness.bind(this), 4000);
         this.id1 = setInterval(this.increaseHunger.bind(this), 4000);
-        // if(this.hunger >= 10)
-        // {
-        //     this.isAlive = false;
-        //     //Reloads from increasedHunger()
-        //     clearInterval(this.id0);
-        // }
-        // if(this.hapiness <= 0)
-        // {
-        //     this.isAlive = false;
-        //     //Reload the page from decreaseHapiness()
-        //     clearInterval(this.id1);
-        // }
     }
     getName()
     {
         this.isAlive = true;
         console.log("name is: " + this.tamaName);
     }
-    increaseHunger():number
+    getRandomTama():tamaTypes
     {
-        console.log("Hunger: " + this.hunger);
+        const tamaTypeP = document.getElementById("tamaTypeP");
+        tamaTypeP.innerText = `Tamagotchi type = ${this.tamaType}`;
+        const random = Math.floor(Math.random() * 3);
+        if (random < 0.3) return "Maskutchi";
+        else if (random > 0.3 && random < 0.6) return "Ginjirotchi";
+        else return "Darumatchi";
+    }
+    increaseHunger():number|string
+    {
+        const HungerP = document.getElementById("hungerP");
         if(this.hunger >=10)
         {
             this.isAlive = false;
-            window.location.reload();
-            console.log("Called from hunger: " + this.isAlive);
+            clearInterval(this.id1);
+            clearInterval(this.id0);
+            // window.location.reload();
+            spawnBtn.style.visibility = "visible";
+            this.hunger = 5;
+            this.happiness = 5;
+            console.log("Called from hunger: isAlive - " + this.isAlive);
         }
-        return this.hunger++;
+        return this.hunger++, HungerP.innerText = `Hunger: ${this.hunger}`;
     }
-    decreaseHapiness():number
+    decreaseHapiness():number|string
     {
-        if(this.hapiness <= 0)
+        const happinessP = document.getElementById("happinessP");
+        
+        if(this.happiness <= 0)
         {
             this.isAlive = false;
-            window.location.reload();
-            console.log("called from hapiness: " + this.isAlive);
+            clearInterval(this.id1);
+            clearInterval(this.id0);
+            // window.location.reload();
+            console.log("called from hapiness: isAlive - " + this.isAlive);
+            spawnBtn.style.visibility = "visible";
+            this.hunger = 5;
+            this.happiness = 5;
         }
-        console.log("Hapiness: " + this.hapiness);
-        return this.hapiness--;
+        return this.happiness--, happinessP.innerText = `Happiness: ${this.happiness}`;
     }
-    play():number
+    play():number|void
     {
+        const playBtn = document.getElementById("play");
+        playBtn.addEventListener("click", () => this.play());
         console.log("Hapiness increased by 5");
-        this.hapiness += 5;
-        if(this.hapiness >= 10)
+        this.happiness += 5;
+        if(this.happiness >= 10)
         {
-            this.hapiness = 10;
+            this.happiness = 10;
         }
-        return this.hapiness;
+        return this.happiness, playBtn.addEventListener("click", () => this.play());
     }
-    feed():number
+    feed():number|void
     {
+        const feedBtn = document.getElementById("feed");
+        // feedBtn.addEventListener("click", () => this.feed());
         if(this.hunger <= 0)
         {
-            this.hapiness -= 3;
+            this.happiness -= 3;
             console.log("Already full, hapiness decreased by 3! :C");
         }
         console.log("Hunger decreased by 5");
-        return this.hunger -= 5;
+        return this.hunger -= 5,feedBtn.addEventListener("click", () => this.feed());
     }
+    
 }
-const test = new Tamagotchi(prompt("Pick a name"), "Type");
+
+type tamaTypes = "Maskutchi" | "Ginjirotchi" | "Darumatchi";
+
+let spawnTama = new Tamagotchi(prompt("pick a name..."));
+
+//#region Tamagotchi info
+// const happinessP = document.getElementById("happinessP");
+// happinessP.innerText = `Happiness: ${this.happiness}`;
+
+// const HungerP = document.getElementById("hungerP");
+// HungerP.innerText = `Hunger: ${this.hunger}`;
+
+// const tamaTypeP = document.getElementById("tamaTypeP");
+// tamaTypeP.innerText = `Tamagotchi type = ${this.tamaType}`;
+
+// const tamaNameP = document.getElementById("tamaNameP");
+// tamaNameP.innerText = `Tamagotchi name: ${this.tamaName}`;
+//#endregion Tamagotchi info
+//#region Buttons
+//Spawn Button
+
+
+const spawnBtn = document.getElementById("spawn");
+spawnBtn.addEventListener("click", () => {let spawnTama =  new Tamagotchi(prompt("pick a name..."))});
+if (this.isAlive = true)
+{
+    spawnBtn.style.visibility = "hidden";
+}
+else
+{
+    spawnBtn.style.visibility = "visible";
+}
+//Feed Button
+const feedBtn = document.getElementById("feed");
+feedBtn.addEventListener("click", () => spawnTama.feed());
+//Play Button
+const playBtn = document.getElementById("play");
+playBtn.addEventListener("click", () => spawnTama.play());
+//Reset Button
+const resetBtn = document.getElementById("reset");
+resetBtn.addEventListener("click", () => window.location.reload());
+
+//#endregion Buttons

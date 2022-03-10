@@ -4,10 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./main.ts"></script>
+    <script src="./main.ts" defer></script>
     <title>Miniprojekt 4</title>
 </head>
 <body>
-    
+    <div id="outer-container">
+        <div id="inner-upper">
+            <h1>Your Tamagotchi</h1>
+            <h3 id="tamaNameP"></h3>
+            <h3 id="tamaTypeP"></h3>
+            <h4>Happiness: 10 is happy, 0 is unhappy</h4>
+            <p id="happinessP">Happiness: 5</p>
+            <h4>Hunger: 0 is full, 10 is starvation</h4>
+            <p id="hungerP">Hunger: 5</p>
+        </div>
+        <div id="inner-btns">
+            <button id="spawn"><p>Spawn</p></button>
+            <button id="feed"><p>Feed</p></button>
+            <button id="play"><p>Play</p></button>
+            <button id="reset"><p>Reset</p></button>
+        </div>
+    </div>
 </body>
 </html>
