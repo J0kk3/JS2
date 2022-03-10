@@ -81,6 +81,10 @@ class Tamagotchi
         if(this.hunger <= 0)
         {
             this.happiness -= 3;
+            if(this.happiness <= 0)
+            {
+                this.happiness = 0;
+            }
             console.log("Already full, hapiness decreased by 3! :C");
         }
         console.log("Hunger decreased by 5");
