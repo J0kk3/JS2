@@ -3,18 +3,23 @@ class Tamagotchi
     public happiness:number = 5; // 10 is happy, 0 is unhappy
     public hunger:number = 5; // 0 is full, 10 is starvation
     public tamaName:string;
-    public tamaType:tamaTypes;
+    // public tamaType:tamaTypes;
+    public tamaType:string;
     public isAlive:boolean = false;
     private id0;
     private id1;
     
-    constructor(tamaName)
+    constructor(tamaName, tamaType)
     {
         this.tamaName = tamaName;
-        this.tamaType = this.getRandomTama();
+        this.tamaType = tamaType;
+        // this.tamaType = this.getRandomTama();
         
         const tamaNameP = document.getElementById("tamaNameP");
         tamaNameP.innerText = `Tamagotchi name: ${this.tamaName}`;
+        
+        const tamaTypeP = document.getElementById("tamaTypeP");
+        tamaTypeP.innerText = `Tamagotchi type: ${this.tamaType}`;
         
         this.id0 = setInterval(this.decreaseHapiness.bind(this), 4000);
         this.id1 = setInterval(this.increaseHunger.bind(this), 4000);
@@ -23,15 +28,6 @@ class Tamagotchi
     {
         this.isAlive = true;
         console.log("name is: " + this.tamaName);
-    }
-    getRandomTama():tamaTypes
-    {
-        const tamaTypeP = document.getElementById("tamaTypeP");
-        tamaTypeP.innerText = `Tamagotchi type = ${this.tamaType}`;
-        const random = Math.floor(Math.random() * 3);
-        if (random < 0.3) return "Maskutchi";
-        else if (random > 0.3 && random < 0.6) return "Ginjirotchi";
-        else return "Darumatchi";
     }
     increaseHunger():number|string
     {
@@ -92,30 +88,13 @@ class Tamagotchi
     }
     
 }
+let spawnTama = new Tamagotchi(prompt("pick a name..."), prompt("Pick a type..."));
 
-type tamaTypes = "Maskutchi" | "Ginjirotchi" | "Darumatchi";
-
-let spawnTama = new Tamagotchi(prompt("pick a name..."));
-
-//#region Tamagotchi info
-// const happinessP = document.getElementById("happinessP");
-// happinessP.innerText = `Happiness: ${this.happiness}`;
-
-// const HungerP = document.getElementById("hungerP");
-// HungerP.innerText = `Hunger: ${this.hunger}`;
-
-// const tamaTypeP = document.getElementById("tamaTypeP");
-// tamaTypeP.innerText = `Tamagotchi type = ${this.tamaType}`;
-
-// const tamaNameP = document.getElementById("tamaNameP");
-// tamaNameP.innerText = `Tamagotchi name: ${this.tamaName}`;
-//#endregion Tamagotchi info
 //#region Buttons
+
 //Spawn Button
-
-
 const spawnBtn = document.getElementById("spawn");
-spawnBtn.addEventListener("click", () => {let spawnTama =  new Tamagotchi(prompt("pick a name..."))});
+spawnBtn.addEventListener("click", () => {let spawnTama =  new Tamagotchi(prompt("pick a name..."),prompt("Pick a type..."))});
 if (this.isAlive = true)
 {
     spawnBtn.style.visibility = "hidden";
@@ -133,5 +112,4 @@ playBtn.addEventListener("click", () => spawnTama.play());
 //Reset Button
 const resetBtn = document.getElementById("reset");
 resetBtn.addEventListener("click", () => window.location.reload());
-
 //#endregion Buttons
