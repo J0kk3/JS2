@@ -1,0 +1,3 @@
+npm init -y
+kolla package.json - ta bort "main": index.json
+installera animejs -> npm install animejs

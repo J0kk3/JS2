@@ -1,0 +1,23 @@
+{
+  "name": "parce-project",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --public-url ./",
+    "serve": "serve -s ./dist/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.3.2"
+  },
+  "dependencies": {
+    "animejs": "^3.2.1"
+  },
+  "browserlist": [
+    "Chrome>95",
+    "Firefox>95"
+  ]
+}
