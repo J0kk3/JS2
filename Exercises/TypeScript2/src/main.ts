@@ -1,10 +1,5 @@
 //#region 1.1 - Type Aliases
-type hurFanSkaJagFåDettaTillEnArray =
-{
-    first: string,
-    second: number,
-    third: boolean
-}
+type arrayThreeThings = [string, number, boolean];
 
 //#endregion 1.1
 //#region 1.2
