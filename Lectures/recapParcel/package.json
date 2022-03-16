@@ -4,13 +4,12 @@
   "description": "",
   "scripts": {
     "dev": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html --dist dir doc --public-url ./",
-    "serve": "serve -s ./dist/",
+    "build": "parcel build ./src/index.html --dist-dir docs --public-url ./",
     "clean": "del-cli ./docs ./dist ./.parcel-cache"
   },
   "repository":{
     "type": "git",
-    "url":"https://github.com/J0kk3/JS2/tree/main/Lectures/recapParcel"
+    "url":"git+https://github.com/J0kk3/JS2/tree/main/Lectures/recapParcel"
   },
   "bugs":{
     "url":"https://github.com/J0kk3/JS2/issues"
