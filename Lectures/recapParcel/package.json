@@ -4,19 +4,27 @@
   "description": "",
   "scripts": {
     "dev": "parcel ./src/index.html",
-    "build": "parcel build ./src/index.html --public-url ./",
+    "build": "parcel build ./src/index.html --dist dir doc --public-url ./",
     "serve": "serve -s ./dist/",
-    "clean": "del-cli ./dist ./.parcel-cache"
+    "clean": "del-cli ./docs ./dist ./.parcel-cache"
   },
   "repository":{
     "type": "git",
     "url":"https://github.com/J0kk3/JS2/tree/main/Lectures/recapParcel"
   },
+  "bugs":{
+    "url":"https://github.com/J0kk3/JS2/issues"
+  },
+  "homepage": "https://github.com/J0kk3/JS2/tree/main/Lectures/recapParcel#readme",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "del-cli": "^4.0.1",
     "parcel": "^2.3.2"
-  }
+  },
+  "browserlist":[
+    "Firefox>95",
+    "Chrome>95"
+  ]
 }
