@@ -28,17 +28,47 @@ function generateResut() : typeof gameResult
 console.log(generateResut());
 //#endregion 2.2
 //#region 2.3
-//Beskrivning, Temperatur, Vindhastighet
-let desc : "awful" | "nice" | "ok";
-type weatherObject = {desc:string, temp:string, speed:string};
-function mögVäder():object
-{
-
-    return void
-}
+    // class weather
+    // {
+    //     Beskrivning, Temperatur, Vindhastighet
+    //     let desc : "awful" | "nice" | "ok";
+    //     type weatherObject = {desc:string, temp:string, speed:string};
+    //     // function mögVäder():object
+    //     // {
+    //     //     return void
+    //     // }
+    // }
 //#endregion 2.3
 //#region 3.1 - Klasser
-
+class User
+{
+    public readonly userName:string;
+    public readonly location:string;
+    private userID = 0;
+    constructor()
+    {
+        this.userName = this.userName;
+        this.location = this.location;
+        this.userID = this.userID;
+    }
+    public createUser(name, location):void
+    {
+        name = this.userName;
+        location = this.location;
+        // this.userID = this.userID;
+        // this.userID++;
+    }
+    public logInfo():void
+    {
+        console.log("user name: " + this.userName, " location: " +  this.location, " ID: " + this.userID);
+    }
+}
+const userOne = new User;
+userOne.createUser("Jocke", "Malmö");
+userOne.logInfo();
+const userTwo = new User;
+userTwo.createUser("Katt", "Lund");
+userTwo.logInfo();
 //#endregion 3.1
 //#region 3.2
 

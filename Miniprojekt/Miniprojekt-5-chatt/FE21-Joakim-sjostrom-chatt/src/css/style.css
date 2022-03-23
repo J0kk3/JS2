@@ -12,6 +12,7 @@ form
 }
 #userMsg
 {
+    resize: none;
     border: solid black 1px;
     width: 25rem;
     height: 7rem;
