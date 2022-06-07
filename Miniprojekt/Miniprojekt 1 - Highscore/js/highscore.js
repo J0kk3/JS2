@@ -3,9 +3,9 @@ DB - Array.js
 index       name        score
 0           Exempel0    100
 1           Exempel1    83
-2           Exempel2      57
-3           Exempel3        33
-4           Exempel4       12
+2           Exempel2    57
+3           Exempel3    33
+4           Exempel4    12
 
 //placeholder variable = newScore = 57
 //for-loop för att kolla score med databasen exempelvis
